@@ -1,0 +1,30 @@
+spring:
+  main:
+    banner-mode: off
+  datasource:
+    url: jdbc:postgresql://localhost:5432/cloud_db
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+        temp:
+          use_jdbc_metadata_defaults: false
+    database: postgresql
+    open-in-view: false
+
+logging:
+  level:
+    root: INFO
+
+app:
+  email_verification_token_expiry_min: 2
+
+gcp:
+  project_id: ${GCP_PROJECT_ID}
+  email_verification_pubsub_topic: ${GCP_EMAIL_VERIFICATION_PUBSUB_TOPIC}

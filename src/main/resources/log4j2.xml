@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout
+                    pattern="%style{%d{ISO8601}}{white} %highlight{%-5level }[%style{%t}{bright,blue}] %style{%C{1.}}{bright,yellow}: %msg%n%throwable"/>
+        </Console>
+
+        <RollingFile name="RollingFile"
+                     fileName="${env:LOGGING_PATH:-./logs}/webapp.log"
+                     filePattern="${env:LOGGING_PATH:-./logs}/webapp-%d{dd-MM-yyyy}-%i.log">
+            <JsonTemplateLayout eventTemplateUri="classpath:LogstashJsonEventLayoutV1.json">
+                <EventTemplateAdditionalField key="ipAddress" value="$${ctx:ipAddress:-}"/>
+                <EventTemplateAdditionalField key="userAgent" value="$${ctx:userAgent:-}"/>
+            </JsonTemplateLayout>
+
+            <Policies>
+                <OnStartupTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="20 MB"/>
+                <TimeBasedTriggeringPolicy/>
+            </Policies>
+        </RollingFile>
+    </Appenders>
+
+    <Loggers>
+        <Root level="INFO">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="RollingFile"/>
+        </Root>
+    </Loggers>
+</Configuration>

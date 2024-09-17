@@ -1,0 +1,54 @@
+HELP.md
+.DS_Store
+target/
+build-target
+.mvn/wrapper/*.jar
+.mvn/maven.config
+!**/src/main/**/target/
+!**/src/test/**/target/
+**/dependency-reduced-pom.xml
+*.class
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+out/
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
+
+### Logs ###
+logs/
+*.log
+
+### Artifacts ###
+*.war
+*.zip
+*.tar.gz
+*.tar
+
+### Packer specific ###
+packer_cache/
+packer/*.pem
+*.pkrvars.hcl

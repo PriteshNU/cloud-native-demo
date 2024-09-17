@@ -23,6 +23,8 @@ else
   echo "OpenJDK installation failed"
 fi
 
+#New changes added here
+
 ## Install PostgreSQL
 #sudo dnf install -y postgresql-server postgresql-contrib
 #sudo postgresql-setup --initdb
